@@ -1,12 +1,7 @@
-// import prisma from "~/config/Prisma";
-// import z from "zod";
+import { mergeRouters } from "./trpc";
 
-import { publicProcedure, router } from "./trpc";
+import { messageRouter } from "./routers/hello";
 
-export const appRouter = router({
-  getMessage: publicProcedure.query(async () => {
-    return "tRPC API IS READY...";
-  }),
-});
+export const appRouter = mergeRouters(messageRouter);
 
 export type AppRouter = typeof appRouter;
